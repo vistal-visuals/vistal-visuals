@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vistal Visuals - Professional Design & Editing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --dark-color: #0f172a;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: var(--white);
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h2 {
+            font-weight: 700;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        /* Sections Logic */
+        section.page-content {
+            display: none;
+            padding: 80px 5%;
+            min-height: 80vh;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Styling */
+        .hero {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200') center/cover;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero span { color: var(--primary-color); }
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-primary { background: var(--primary-color); color: white; }
+        .btn-secondary { border: 2px solid var(--primary-color); color: var(--primary-color); }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .card i { font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 4rem 5% 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 2rem;
+        }
+
+        .footer-links a, .footer-contact a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom { text-align: center; padding-top: 1rem; font-size: 0.9rem; color: #94a3b8; }
+
+        /* Responsive Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* Simplified for this static version */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">
+                <h2><i class="fas fa-eye"></i> Vistal Visuals</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a onclick="showPage('home')" id="link-home" class="active">Home</a></li>
+                <li><a onclick="showPage('about')" id="link-about">About</a></li>
+                <li><a onclick="showPage('services')" id="link-services">Services</a></li>
+                <li><a onclick="showPage('portfolio')" id="link-portfolio">Portfolio</a></li>
+                <li><a onclick="showPage('contact')" id="link-contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="page-content active hero">
+        <h1>Transform Your Vision<br><span>Into Stunning Visuals</span></h1>
+        <p>Professional Design & Editing Services for Brands, Businesses & Creators</p>
+        <div class="hero-buttons">
+            <a onclick="showPage('services')" class="btn btn-primary">View Services</a>
+            <a onclick="showPage('portfolio')" class="btn btn-secondary">See Portfolio</a>
+        </div>
+    </section>
+
+    <section id="about" class="page-content">
+        <h2 style="text-align: center;">About Vistal Visuals</h2>
+        <p style="max-width: 800px; margin: 2rem auto; text-align: center;">
+            Turning visions into visual masterpieces. We specialize in high-end design and video post-production, ensuring your brand message is delivered with clarity and style.
+        </p>
+        <div class="grid">
+            <div class="card"><h3>100+</h3><p>Happy Clients</p></div>
+            <div class="card"><h3>50+</h3><p>Projects Done</p></div>
+            <div class="card"><h3>24/7</h3><p>Support</p></div>
+        </div>
+    </section>
+
+    <section id="services" class="page-content">
+        <h2 style="text-align: center;">What I Offer</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-palette"></i>
+                <h3>Graphic Design</h3>
+                <p>Logos, Branding, Posters & More</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-video"></i>
+                <h3>Video Editing</h3>
+                <p>Professional Cuts & Motion Graphics</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-images"></i>
+                <h3>Photo Editing</h3>
+                <p>Retouching & Enhancement</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="page-content">
+        <h2 style="text-align: center;">My Work</h2>
+        <div class="grid">
+            <div class="card" style="height: 250px; background: #ddd;">Project Image 1</div>
+            <div class="card" style="height: 250px; background: #ddd;">Project Image 2</div>
+            <div class="card" style="height: 250px; background: #ddd;">Project Image 3</div>
+        </div>
+    </section>
+
+    <section id="contact" class="page-content">
+        <h2 style="text-align: center;">Get In Touch</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>vistalvisuals@gmail.com</p>
+                <p>info@vistalvisuals.online</p>
+            </div>
+            <div class="card">
+                <i class="fab fa-instagram"></i>
+                <h3>Instagram</h3>
+                <p>@vistalvisuals</p>
+                <a href="https://www.instagram.com/vistalvisuals" target="_blank" class="btn btn-primary">Follow</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>Vistal Visuals</h2>
+                <p>Visual masterpieces tailored for you.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a onclick="showPage('services')">Services</a>
+                <a onclick="showPage('portfolio')">Portfolio</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p>vistalvisuals@gmail.com</p>
+                <p>info@vistalvisuals.online</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Vistal Visuals. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-content');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Remove active class from all links
+            const links = document.querySelectorAll('.nav-menu a');
+            links.forEach(link => link.classList.remove('active'));
+
+            // Show current section
+            document.getElementById(pageId).classList.add('active');
+
+            // Set current link to active
+            const activeLink = document.getElementById('link-' + pageId);
+            if(activeLink) activeLink.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
